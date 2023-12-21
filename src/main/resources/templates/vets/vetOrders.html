@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+      th:replace="~{fragments/layout :: layout (~{::body},'owners')}">
+
+
+<body>
+<h2>Checkout</h2>
+
+<table id="vets" class="table table-striped">
+  <thead>
+  <tr>
+    <th>Service Name</th>
+    <th>Amount</th>
+    <th>Tax amount</th>
+    <th>Total</th>
+
+
+  </tr>
+  </thead>
+  <tbody>
+  <!--  <tr th:each="vetService : ${vetServices}">-->
+  <!--    <td th:text="${vetService.id}"></td>-->
+  <!--    <td th:text="${vetService.vet.firstName + ' ' + vetService.vet.lastName}"></td>-->
+  <!--    <td th:text="${vetService.serviceName}"></td>-->
+  <!--    <td th:text="${vetService.servicePrice}"></td>-->
+
+
+
+  <!--  </tr>-->
+  </tbody>
+</table>
+
+<!--<td>-->
+<!--  <a class="btn btn-primary" th:href="@{/owners/login}">Pay with cash</a>-->
+<!--</td>-->
+<form th:action="@{/checkout}" th:object="${request}" method="post">
+  <h2>Enter product details</h2>
+  <div class="mb-3">
+    <label for="email"
+           class="form-label">Email address</label>
+    <input type="email"
+           th:field="*{email}"
+           required class="form-control"
+           id="email"
+           aria-describedby="emailHelp">
+    <div id="emailHelp"
+         class="form-text">
+      We'll never share your email with anyone else.
+    </div>
+    <p th:if="${#fields.hasErrors('email')}"
+       th:errors="*{email}"
+       style="color: red"/>
+  </div>
+
+  <div class="mb-3">
+    <label for="productName"
+           class="form-label" >Service Name</label>
+    <input type="text"
+           required
+           th:field="*{productName}"
+           class="form-control"
+           id="productName">
+    <p th:if="${#fields.hasErrors('productName')}"
+       th:errors="*{productName}"
+       style="color: red"/>
+  </div>
+  <div class="mb-3">
+    <label for="amount"
+           class="form-label">Amount</label>
+    <input type="number"
+           required th:field="*{amount}"
+           class="form-control"
+           id="amount">
+    <p th:if="${#fields.hasErrors('amount')}"
+       th:errors="*{amount}"
+       style="color: red"/>
+  </div>
+  <div class="mb-3">
+    <label for="amount"
+           class="form-label">Tax Amount</label>
+    <input type="number"
+           required
+           class="form-control"
+           id="taxAmount">
+    <p th:if="${#fields.hasErrors('amount')}"
+       th:errors="*{amount}"
+       style="color: red"/>
+  </div>
+  <button type="submit"
+          class="btn btn-primary">Pay with cash</button>
+</form>
+</body>
+</html>

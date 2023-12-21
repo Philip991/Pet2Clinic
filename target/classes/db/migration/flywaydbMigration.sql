@@ -1,0 +1,5 @@
+ALTER TABLE vets ADD COLUMN country VARCHAR(255);
+ALTER TABLE vets ADD COLUMN license_expire_date DATE;
+
+ALTER TABLE vets ADD COLUMN password VARCHAR(255);
+ALTER TABLE owners ADD COLUMN password VARCHAR(255);

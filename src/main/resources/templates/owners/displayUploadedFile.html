@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+
+<html xmlns:th="https://www.thymeleaf.org" th:replace="~{fragments/layout :: layout (~{::body},'home')}">
+
+<body>
+
+<h2>Display File Content</h2>
+
+<pre th:text="${pdfContent}"></pre>
+
+
+<div class="form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <a class="btn btn-primary" th:href="@{/}">Done</a>
+  </div>
+</div>
+</body>
+
+</html>
